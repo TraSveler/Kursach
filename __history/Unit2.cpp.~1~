@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit2.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm2 *Form2;
+string setWord[15];
+//Graphics::TBitmap *imag= new Graphics::TBitmap;
+//---------------------------------------------------------------------------
+__fastcall TForm2::TForm2(TComponent* Owner)
+	: TForm(Owner)
+{
+setWord[0]="";
+setWord[1]="";
+setWord[2]="";
+setWord[3]="";
+}
+//---------------------------------------------------------------------------
+
