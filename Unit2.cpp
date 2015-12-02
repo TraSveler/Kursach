@@ -12,6 +12,7 @@ TForm2 *Form2;
 String setWord[16];
 Graphics::TBitmap *imag= new Graphics::TBitmap;
 int score = 0;
+static int i=0;
 //---------------------------------------------------------------------------
 __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner)
@@ -33,44 +34,43 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 	setWord[14]="«гущенка";
 	setWord[15]="";
 
-//	imag->LoadFromFile(".level0.bmp");
-	Form2->Canvas->StretchDraw(Rect(100,100,200,200),imag);
-
-	while(score < 100) {
-//	Form2->Canvas->Refresh();
 	}
 
-	}
 //---------------------------------------------------------------------------
 void __fastcall TForm2::FormPaint(TObject *Sender)
 {
-	imag->LoadFromFile("./level0.bmp");
-	Form2->Canvas->StretchDraw(Rect(270,80,440,250),imag);
+	imag->LoadFromFile("./images/level0.bmp");
+	Form2->Canvas->StretchDraw(Rect(Form2->Width/2-165, 50, Form2->Width/2+150, 300), imag);
 
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm2::Button1Click(TObject *Sender)
 {
-	static int i=0;
-	if(Edit1->Text==setWord[i]) {
+
+	if(Edit1->Text == setWord[i]) {
+//	 Label2->Caption=setWord[0];
 	 i++;
-	 String FileName="./level"+IntToStr(i)+".bmp";
+	 String FileName="./images/level"+IntToStr(i)+".bmp";
 	 imag->LoadFromFile(FileName);
 	 Form2->Canvas->StretchDraw(Rect(Form2->Width/2-165, 50, Form2->Width/2+150, 300), imag);
-//	 Form2->Canvas->StretchDraw(Rect(Form2->Width/2-50,100,Form2->Width/2+50,250),imag);
+
 	 Edit1->Text="";
+
+	 Label2->Caption="";
+	 Button2->Enabled = true;
+	 Button2->Font->Style = Button2->Font->Style >> fsStrikeOut;
+
 	 score += 100;
+	 Label1->Refresh();
 	 Label1->Caption = score;
 	} else {
 			ShowMessage( "Error, try it now" );
-			}
-
-//	if( score == 1500 ) {
-//	ShowMessage("Congratious! You WIN ;)");
-//	Form2->Close(); }
-
-
+			Edit1->Clear();
+	}
+	if( i > 14 ) {
+	ShowMessage("Congratious! You WIN ;)");
+	Form2->Close(); }
 
 }
 //---------------------------------------------------------------------------
@@ -82,4 +82,20 @@ void __fastcall TForm2::FormResize(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button2Click(TObject *Sender)
+{
+	Label2->Visible = true;
+
+	score = score - 85;
+	Label1->Caption = score;
+	Label2->Caption=setWord[i];
+
+	Button2->Enabled = false;
+	Button2->Font->Style = Button2->Font->Style << fsStrikeOut;
+
+
+}
+//---------------------------------------------------------------------------
+
 
