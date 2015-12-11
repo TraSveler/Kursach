@@ -1,0 +1,101 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit2.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm2 *Form2;
+
+String setWord[16];
+Graphics::TBitmap *imag= new Graphics::TBitmap;
+int score = 0;
+static int i=0;
+//---------------------------------------------------------------------------
+__fastcall TForm2::TForm2(TComponent* Owner)
+	: TForm(Owner)
+{
+	setWord[0]="Переменная";
+	setWord[1]="Медитация";
+	setWord[2]="Мечта";
+	setWord[3]="Код";
+	setWord[4]="Море";
+	setWord[5]="Горы";
+	setWord[6]="Корабль";
+	setWord[7]="Игуана";
+	setWord[8]="Знания";
+	setWord[9]="Мотивация";
+	setWord[10]="Лентяй";
+	setWord[11]="Егор";
+	setWord[12]="Влад";
+	setWord[13]="Макс";
+	setWord[14]="Згущенка";
+	setWord[15]="";
+
+	}
+
+//---------------------------------------------------------------------------
+void __fastcall TForm2::FormPaint(TObject *Sender)
+{
+	imag->LoadFromFile("./images/level0.bmp");
+	Form2->Canvas->StretchDraw(Rect(Form2->Width/2-165, 50, Form2->Width/2+150, 300), imag);
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button1Click(TObject *Sender)
+{
+
+	if(Edit1->Text == setWord[i]) {
+//	 Label2->Caption=setWord[0];
+	 i++;
+	 String FileName="./images/level"+IntToStr(i)+".bmp";
+	 imag->LoadFromFile(FileName);
+	 Form2->Canvas->StretchDraw(Rect(Form2->Width/2-165, 50, Form2->Width/2+150, 300), imag);
+
+	 Edit1->Text="";
+
+	 Label2->Caption="";
+	 Button2->Enabled = true;
+	 Button2->Font->Style = Button2->Font->Style >> fsStrikeOut;
+
+	 score += 100;
+	 Label1->Refresh();
+	 Label1->Caption = score;
+	} else {
+			ShowMessage( "Error, try it now" );
+			Edit1->Clear();
+	}
+	if( i > 14 ) {
+	ShowMessage("Congratious! You WIN ;)");
+	Form2->Close(); }
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::FormResize(TObject *Sender)
+{
+//Form2->Canvas->CopyRect(Rect(270,100,400,250),Form2->Canvas,Rect(0,0,1,1)) ;
+// Form2->Canvas->StretchDraw(Rect(Form2->Width/2-50,100,Form2->Width/2+50,250),imag);
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button2Click(TObject *Sender)
+{
+	Label2->Visible = true;
+
+	score = score - 85;
+	Label1->Caption = score;
+	Label2->Caption=setWord[i];
+
+	Button2->Enabled = false;
+	Button2->Font->Style = Button2->Font->Style << fsStrikeOut;
+
+
+}
+//---------------------------------------------------------------------------
+
+

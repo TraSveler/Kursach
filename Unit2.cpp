@@ -9,7 +9,7 @@
 #pragma resource "*.dfm"
 TForm2 *Form2;
 
-String setWord[16];
+String setWord[21];
 Graphics::TBitmap *imag= new Graphics::TBitmap;
 int score = 0;
 static int i=0;
@@ -17,22 +17,27 @@ static int i=0;
 __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner)
 {
-	setWord[0]="Переменная";
-	setWord[1]="Медитация";
-	setWord[2]="Мечта";
-	setWord[3]="Код";
-	setWord[4]="Море";
-	setWord[5]="Горы";
-	setWord[6]="Корабль";
-	setWord[7]="Игуана";
-	setWord[8]="Знания";
-	setWord[9]="Мотивация";
-	setWord[10]="Лентяй";
-	setWord[11]="Егор";
-	setWord[12]="Влад";
-	setWord[13]="Макс";
-	setWord[14]="Згущенка";
-	setWord[15]="";
+	setWord[0]="Сон";
+	setWord[1]="Море";
+	setWord[2]="Музика";
+	setWord[3]="Температура";
+	setWord[4]="Світло";
+	setWord[5]="Книжка";
+	setWord[6]="Піаніно";
+	setWord[7]="Корабль";
+	setWord[8]="Мотоцикл";
+	setWord[9]="Ігуана";
+	setWord[10]="Конверт";
+	setWord[11]="Посмішка";
+	setWord[12]="Браузер";
+	setWord[13]="Програмування";
+	setWord[14]="Гнів";
+	setWord[15]="Думка";
+	setWord[16]="Малюнок";
+	setWord[17]="Віра";
+	setWord[18]="Подорож";
+	setWord[19]="Мрія";
+	setWord[20]="";
 
 	}
 
@@ -48,8 +53,7 @@ void __fastcall TForm2::FormPaint(TObject *Sender)
 void __fastcall TForm2::Button1Click(TObject *Sender)
 {
 
-	if(Edit1->Text == setWord[i]) {
-//	 Label2->Caption=setWord[0];
+	if( Edit1->Text == setWord[i] ) {
 	 i++;
 	 String FileName="./images/level"+IntToStr(i)+".bmp";
 	 imag->LoadFromFile(FileName);
@@ -65,7 +69,7 @@ void __fastcall TForm2::Button1Click(TObject *Sender)
 	 Label1->Refresh();
 	 Label1->Caption = score;
 	} else {
-			ShowMessage( "Error, try it now" );
+			ShowMessage( "Неймовірно... Ви ввели неправильне значення. Спробуйте ще!" );
 			Edit1->Clear();
 	}
 	if( i > 14 ) {
@@ -73,18 +77,15 @@ void __fastcall TForm2::Button1Click(TObject *Sender)
 	Form2->Close(); }
 
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TForm2::FormResize(TObject *Sender)
-{
-//Form2->Canvas->CopyRect(Rect(270,100,400,250),Form2->Canvas,Rect(0,0,1,1)) ;
-// Form2->Canvas->StretchDraw(Rect(Form2->Width/2-50,100,Form2->Width/2+50,250),imag);
-
-}
 //---------------------------------------------------------------------------
 
 void __fastcall TForm2::Button2Click(TObject *Sender)
 {
+	if( score <= 0 ) {
+	 Button2->Enabled=false;
+	}
+	else {
 	Label2->Visible = true;
 
 	score = score - 85;
@@ -93,9 +94,36 @@ void __fastcall TForm2::Button2Click(TObject *Sender)
 
 	Button2->Enabled = false;
 	Button2->Font->Style = Button2->Font->Style << fsStrikeOut;
+	}
+}
 
-
+//---------------------------------------------------------------------------
+void __fastcall TForm2::Button3Click(TObject *Sender)
+{
+	Label3->Caption="Підказка забере 85 центів.\
+	    Якщо кількість монет менша, Ви не можете її використати";
+	  Label3->Visible=true;
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm2::Timer1Timer(TObject *Sender)
+{
+	if( true ) {
+	  Label3->Visible=false;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button4Click(TObject *Sender)
+{
+	Label4->Caption="Перша буква відповіді мусить бути Заголовковою";
+	Label4->Visible=true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Timer2Timer(TObject *Sender)
+{
+      Label4->Visible=false;
+}
+//---------------------------------------------------------------------------
 

@@ -7,7 +7,7 @@ object Form2: TForm2
   Caption = #1042#1075#1072#1076#1072#1081' '#1089#1083#1086#1074#1086
   ClientHeight = 501
   ClientWidth = 700
-  Color = 2849540
+  Color = clPurple
   DragKind = dkDock
   DragMode = dmAutomatic
   Font.Charset = DEFAULT_CHARSET
@@ -18,7 +18,6 @@ object Form2: TForm2
   OldCreateOrder = False
   Position = poDesigned
   OnPaint = FormPaint
-  OnResize = FormResize
   DesignSize = (
     700
     501)
@@ -66,10 +65,41 @@ object Form2: TForm2
     Visible = False
     ExplicitWidth = 293
   end
+  object Label3: TLabel
+    Left = 33
+    Top = 395
+    Width = 185
+    Height = 47
+    AutoSize = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clLime
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
+    WordWrap = True
+  end
+  object Label4: TLabel
+    Left = 407
+    Top = 427
+    Width = 162
+    Height = 46
+    AutoSize = False
+    Color = 4587590
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clLime
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    WordWrap = True
+  end
   object Edit1: TEdit
     Left = 290
     Top = 400
-    Width = 105
+    Width = 111
     Height = 21
     Align = alCustom
     Alignment = taCenter
@@ -84,7 +114,7 @@ object Form2: TForm2
     Height = 46
     Cursor = crHandPoint
     Anchors = [akLeft, akTop, akRight]
-    Caption = #1042#1074#1077#1089#1090#1080' '#1089#1083#1086#1074#1086
+    Caption = #1055#1077#1088#1077#1074#1110#1088#1080#1090#1080' '#1089#1083#1086#1074#1086
     Default = True
     TabOrder = 1
     OnClick = Button1Click
@@ -107,5 +137,49 @@ object Form2: TForm2
     TabOrder = 2
     StyleElements = [seFont, seBorder]
     OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 33
+    Top = 456
+    Width = 17
+    Height = 17
+    Cursor = crHelp
+    Caption = 'i'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -10
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 393
+    Top = 427
+    Width = 8
+    Height = 46
+    Cursor = crHelp
+    Caption = 'i'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 4
+    OnClick = Button4Click
+  end
+  object Timer1: TTimer
+    Interval = 7500
+    OnTimer = Timer1Timer
+    Left = 128
+    Top = 456
+  end
+  object Timer2: TTimer
+    Interval = 7000
+    OnTimer = Timer2Timer
+    Left = 424
+    Top = 456
   end
 end
