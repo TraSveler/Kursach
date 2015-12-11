@@ -32,8 +32,8 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 	setWord[12]="Браузер";
 	setWord[13]="Програмування";
 	setWord[14]="Гнів";
-	setWord[15]="Думка";
-	setWord[16]="Малюнок";
+	setWord[15]="Картина";
+	setWord[16]="Думка";
 	setWord[17]="Віра";
 	setWord[18]="Подорож";
 	setWord[19]="Мрія";
@@ -66,14 +66,13 @@ void __fastcall TForm2::Button1Click(TObject *Sender)
 	 Button2->Font->Style = Button2->Font->Style >> fsStrikeOut;
 
 	 score += 100;
-	 Label1->Refresh();
 	 Label1->Caption = score;
 	} else {
 			ShowMessage( "Неймовірно... Ви ввели неправильне значення. Спробуйте ще!" );
 			Edit1->Clear();
 	}
-	if( i > 14 ) {
-	ShowMessage("Congratious! You WIN ;)");
+	if( i > 19 ) {
+	ShowMessage("Вітаю! Ви пройшли гру. Дякую за увагу та всього Вам найкращого! ;)");
 	Form2->Close(); }
 
 }
@@ -101,7 +100,7 @@ void __fastcall TForm2::Button2Click(TObject *Sender)
 void __fastcall TForm2::Button3Click(TObject *Sender)
 {
 	Label3->Caption="Підказка забере 85 центів.\
-	    Якщо кількість монет менша, Ви не можете її використати";
+	Якщо кількість монет менша,   Ви не можете її використати";
 	  Label3->Visible=true;
 }
 //---------------------------------------------------------------------------
@@ -110,20 +109,22 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)
 {
 	if( true ) {
 	  Label3->Visible=false;
-	}
+	  }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm2::Button4Click(TObject *Sender)
 {
-	Label4->Caption="Перша буква відповіді мусить бути Заголовковою";
+	Label4->Caption="Перша буква відповіді мусить бути Заголовковою, а решта - строчковими";
 	Label4->Visible=true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm2::Timer2Timer(TObject *Sender)
 {
-      Label4->Visible=false;
+	if( true ) {
+	  Label4->Visible=false;
+	  }
 }
 //---------------------------------------------------------------------------
 

@@ -67,8 +67,8 @@ object Form2: TForm2
   end
   object Label3: TLabel
     Left = 33
-    Top = 395
-    Width = 185
+    Top = 403
+    Width = 160
     Height = 47
     AutoSize = False
     Font.Charset = DEFAULT_CHARSET
@@ -82,9 +82,9 @@ object Form2: TForm2
   end
   object Label4: TLabel
     Left = 407
-    Top = 427
+    Top = 416
     Width = 162
-    Height = 46
+    Height = 57
     AutoSize = False
     Color = 4587590
     Font.Charset = DEFAULT_CHARSET
@@ -114,7 +114,7 @@ object Form2: TForm2
     Height = 46
     Cursor = crHandPoint
     Anchors = [akLeft, akTop, akRight]
-    Caption = #1055#1077#1088#1077#1074#1110#1088#1080#1090#1080' '#1089#1083#1086#1074#1086
+    Caption = #1042#1074#1077#1089#1090#1080' '#1089#1083#1086#1074#1086
     Default = True
     TabOrder = 1
     OnClick = Button1Click
