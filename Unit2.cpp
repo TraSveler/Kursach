@@ -122,7 +122,7 @@ void __fastcall TForm2::Button4Click(TObject *Sender)
 
 void __fastcall TForm2::Timer2Timer(TObject *Sender)
 {
-	if( true ) {
+	if( true) {
 	  Label4->Visible=false;
 	  }
 }
